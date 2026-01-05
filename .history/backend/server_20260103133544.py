@@ -243,7 +243,7 @@ async def google_session(request: Request):
     if not session_id:
         raise HTTPException(status_code=400, detail="Session ID required")
     
-    # Call  OAuth API
+    # Call Emergent OAuth API
     import aiohttp
     async with aiohttp.ClientSession() as session:
         async with session.get(
@@ -280,7 +280,7 @@ async def google_session(request: Request):
         }
         await db.users.insert_one(user)
     
-    # Create session with  session token
+    # Create session with Emergent session token
     session_token = data["session_token"]
     session = {
         "session_token": session_token,
